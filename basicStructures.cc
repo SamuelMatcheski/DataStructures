@@ -9,8 +9,10 @@ using namespace std;
 template <typename T>
 struct BinaryNode {
     T val;
+    int height = 0;
     unique_ptr<BinaryNode> leftchild;
     unique_ptr<BinaryNode> rightchild;
+    BinaryNode(T v) : val{v} {}
     void printSubTree(BinaryNode<T> *node, int depth) const;
 };
 
@@ -35,7 +37,7 @@ class BinaryTree {
 template <typename T>
 class AVLtree : public BinaryTree<T> {
     public:
-        AVLTree() : BinaryTree<T>() {};
+        AVLtree() : BinaryTree<T>() {}
         // O(logn) search - does not transfer ownership
         // O(1) aux space
         virtual BinaryNode<T> *search(T v) const override;
@@ -44,6 +46,8 @@ class AVLtree : public BinaryTree<T> {
         virtual void insert(T v) override;
         // O(logn) remove - "pops" the node from the tree, transferring ownership to the caller
         // O(logn) aux space - for the getPredecessors stack
-        virtual unique_ptr<Node> remove(T v) override;
+        virtual unique_ptr<BinaryNode<T>> remove(T v) override;
 };
 
+
+#include "basicStructures-impl.hpp"
