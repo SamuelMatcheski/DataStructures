@@ -8,7 +8,7 @@ int main() {
     tree.insert(5);
     tree.insert(15);
     tree.insert(3);
-    tree.insert(7);
+    tree.insert(7); // added comment
 
     cout << "\nAVL Tree Structure (rotated counter-clockwise):\n" << endl;
     tree.printTree();
